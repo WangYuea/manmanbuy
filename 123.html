@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    function A( age, name ){
+        this.age = age;
+        this.name = name;
+    }
+
+    A.prototype.show = function(){
+        alert('父级方法');
+    }
+
+    function B(age,name,job){
+       A.apply( this, arguments );
+        this.job = job;
+    }
+
+    B.prtotypoe = new A();
+    var b = new A(14,'侠客行');
+    var a = new B(15,'狼侠','侠客');
+    console.log(b);//age: 14, name: "侠客行"
+    console.log(a);//age: 15, name: "狼侠", job: "侠客"
+</script>
+</body>
+</html>
